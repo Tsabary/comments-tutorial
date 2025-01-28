@@ -29,7 +29,7 @@ export default function RootLayout() {
   return (
     <View className="flex-1">
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="index" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />
     </View>
