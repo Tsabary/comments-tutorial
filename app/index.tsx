@@ -1,7 +1,27 @@
+import { useRef, useState } from "react";
 import { Text, View, FlatList, TouchableOpacity } from "react-native";
+import BottomSheet from "@gorhom/bottom-sheet";
 import { posts } from "../constants/dummy-data";
+import CommentSectionSheet from "../components/CommentSectionSheet";
 
 export default function HomeScreen() {
+  const bottomSheetRef = useRef<BottomSheet>(null);
+  const [referenceId, setReferenceId] = useState<string | null>(null);
+
+  const handleOpen = (newReferenceId: string) => {
+    if (bottomSheetRef.current) {
+      setReferenceId(newReferenceId);
+      bottomSheetRef.current.expand(); // `expand` method now has TypeScript autocomplete
+    }
+  };
+
+  const handleClose = () => {
+    if (bottomSheetRef.current) {
+      bottomSheetRef.current.close();
+      setReferenceId(null);
+    }
+  };
+
   return (
     <View className="bg-gray-100 flex-1 p-4">
       <FlatList
@@ -13,7 +33,7 @@ export default function HomeScreen() {
             <Text className="text-gray-600 mt-2">{item.content}</Text>
             <TouchableOpacity
               className="bg-blue-500 mt-4 p-3 rounded-lg"
-              onPress={() => console.log(`Open comments for ${item.id}`)}
+              onPress={() => handleOpen(item.id)}
             >
               <Text className="text-white text-center font-medium">
                 Open Discussion
@@ -21,6 +41,11 @@ export default function HomeScreen() {
             </TouchableOpacity>
           </View>
         )}
+      />
+      <CommentSectionSheet
+        ref={bottomSheetRef}
+        referenceId={referenceId}
+        handleClose={handleClose}
       />
     </View>
   );

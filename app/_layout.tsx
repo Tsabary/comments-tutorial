@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { ReplykeProvider, TokenManager } from "replyke-expo";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -27,20 +28,22 @@ export default function RootLayout() {
   }
 
   return (
-    <ReplykeProvider projectId={process.env.EXPO_PUBLIC_REPLYKE_PROJECT_ID!}>
-      <TokenManager />
-      <SafeAreaProvider>
-        <SafeAreaView className="flex-1">
-          <Stack
-            screenOptions={{
-              headerShown: false,
-            }}
-          >
-            <Stack.Screen name="index" options={{ headerShown: false }} />
-          </Stack>
-        </SafeAreaView>
-        <StatusBar style="dark" />
-      </SafeAreaProvider>
-    </ReplykeProvider>
+    <GestureHandlerRootView>
+      <ReplykeProvider projectId={process.env.EXPO_PUBLIC_REPLYKE_PROJECT_ID!}>
+        <TokenManager />
+        <SafeAreaProvider>
+          <SafeAreaView className="flex-1">
+            <Stack
+              screenOptions={{
+                headerShown: false,
+              }}
+            >
+              <Stack.Screen name="index" options={{ headerShown: false }} />
+            </Stack>
+          </SafeAreaView>
+          <StatusBar style="dark" />
+        </SafeAreaProvider>
+      </ReplykeProvider>
+    </GestureHandlerRootView>
   );
 }
