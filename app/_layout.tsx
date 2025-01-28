@@ -1,12 +1,12 @@
 import "../global.css";
-
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
-import { View } from "react-native";
 import "react-native-reanimated";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { ReplykeProvider, TokenManager } from "replyke-expo";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -27,11 +27,20 @@ export default function RootLayout() {
   }
 
   return (
-    <View className="flex-1">
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </View>
+    <ReplykeProvider projectId={process.env.EXPO_PUBLIC_REPLYKE_PROJECT_ID!}>
+      <TokenManager />
+      <SafeAreaProvider>
+        <SafeAreaView className="flex-1">
+          <Stack
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          </Stack>
+        </SafeAreaView>
+        <StatusBar style="dark" />
+      </SafeAreaProvider>
+    </ReplykeProvider>
   );
 }
