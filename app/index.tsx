@@ -3,6 +3,8 @@ import { Text, View, FlatList, TouchableOpacity } from "react-native";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { posts } from "../constants/dummy-data";
 import CommentSectionSheet from "../components/CommentSectionSheet";
+import SinglePost from "../components/SinglePost";
+import { EntityProvider } from "replyke-expo";
 
 export default function HomeScreen() {
   const bottomSheetRef = useRef<BottomSheet>(null);
@@ -28,18 +30,9 @@ export default function HomeScreen() {
         data={posts}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <View className="bg-white p-4 mb-4 rounded-xl shadow-lg">
-            <Text className="text-lg font-bold text-gray-800">{item.id}</Text>
-            <Text className="text-gray-600 mt-2">{item.content}</Text>
-            <TouchableOpacity
-              className="bg-blue-500 mt-4 p-3 rounded-lg"
-              onPress={() => handleOpen(item.id)}
-            >
-              <Text className="text-white text-center font-medium">
-                Open Discussion
-              </Text>
-            </TouchableOpacity>
-          </View>
+          <EntityProvider referenceId={item.id} createIfNotFound key={item.id}>
+            <SinglePost item={item} handleOpen={handleOpen} />
+          </EntityProvider>
         )}
       />
       <CommentSectionSheet
