@@ -14,16 +14,16 @@ const posts = [
 
 // Dummy data for users
 const users = [
-  { id: "user1", username: "john123" },
-  { id: "user2", username: "emma456" },
-  { id: "user3", username: "mike789" },
-  { id: "user4", username: "sarah202" },
-  { id: "user5", username: "daniel567" },
-  { id: "user6", username: "chris88" },
-  { id: "user7", username: "lucy999" },
-  { id: "user8", username: "kate77" },
-  { id: "user9", username: "noah321" },
-  { id: "user10", username: "olivia654" },
+  { id: "user1", username: "lionel_messi10" },
+  { id: "user2", username: "diego_maradona" },
+  { id: "user3", username: "pele" },
+  { id: "user4", username: "ronaldo" },
+  // { id: "user5", username: "daniel567" },
+  // { id: "user6", username: "chris88" },
+  // { id: "user7", username: "lucy999" },
+  // { id: "user8", username: "kate77" },
+  // { id: "user9", username: "noah321" },
+  // { id: "user10", username: "olivia654" },
 ];
 
 export { posts, users };

@@ -27,7 +27,7 @@ export default function RootLayout() {
   const [signedToken, setSignedToken] = useState<string>();
 
   const handleSignJwt = async () => {
-    const payload = users[0];
+    const payload = users[3];
 
     const token = await signTestingJwt({
       projectId,

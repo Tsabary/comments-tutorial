@@ -81,14 +81,13 @@ const SinglePost = ({
         </TouchableOpacity>
       </View>
 
-
       {/* Open Discussion Button */}
       <TouchableOpacity
         className="bg-blue-500 mt-4 p-3 rounded-lg"
         onPress={() => handleOpen(item.id)}
       >
         <Text className="text-white text-center font-medium">
-          Open Discussion
+          Open Discussion ({entity?.repliesCount})
         </Text>
       </TouchableOpacity>
     </View>
