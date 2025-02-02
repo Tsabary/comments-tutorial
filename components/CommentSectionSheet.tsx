@@ -10,7 +10,7 @@ import {
   useSocialComments,
   useSocialStyle,
   UseSocialStyleProps,
-} from "replyke-expo";
+} from "@replyke/comments-social-react-native"
 import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetBackdropProps,
