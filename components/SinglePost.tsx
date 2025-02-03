@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
-import { useEntity } from "replyke-expo";
+import { useEntity } from "@replyke/expo";
 
 const SinglePost = ({
   item,

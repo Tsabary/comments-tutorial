@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
-import { Text, View, FlatList, TouchableOpacity } from "react-native";
+import { View, FlatList } from "react-native";
+import { EntityProvider } from "@replyke/expo";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { posts } from "../constants/dummy-data";
 import CommentSectionSheet from "../components/CommentSectionSheet";
 import SinglePost from "../components/SinglePost";
-import { EntityProvider } from "replyke-expo";
 
 export default function HomeScreen() {
   const bottomSheetRef = useRef<BottomSheet>(null);
