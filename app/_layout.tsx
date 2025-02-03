@@ -6,7 +6,7 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import "react-native-reanimated";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { ReplykeProvider, TokenManager } from "replyke-expo";
+import { ReplykeProvider } from "@replyke/expo";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -30,7 +30,6 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView>
       <ReplykeProvider projectId={process.env.EXPO_PUBLIC_REPLYKE_PROJECT_ID!}>
-        <TokenManager />
         <SafeAreaProvider>
           <SafeAreaView className="flex-1">
             <Stack
