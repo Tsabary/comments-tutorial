@@ -6,7 +6,7 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import "react-native-reanimated";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { ReplykeProvider, TokenManager, useSignTestingJwt } from "replyke-expo";
+import { ReplykeProvider, useSignTestingJwt } from "@replyke/expo";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import { users } from "../constants/dummy-data";
@@ -55,7 +55,6 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView>
       <ReplykeProvider projectId={projectId} signedToken={signedToken}>
-        <TokenManager />
         <SafeAreaProvider>
           <SafeAreaView className="flex-1">
             <Stack
